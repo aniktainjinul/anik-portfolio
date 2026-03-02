@@ -855,6 +855,20 @@ function closeModal(){
   });
 })();
 </script>
+  <script>
+function copyDOI() {
+  const doi = "10.1007/s13399-024-05728-6";
+  navigator.clipboard.writeText(doi).then(function() {
+    const status = document.getElementById("copyStatus");
+    status.textContent = "Copied!";
+    status.style.color = "#00f5a0";
+
+    setTimeout(() => {
+      status.textContent = "";
+    }, 2000);
+  });
+}
+</script>
 
 </body>
 </html>
