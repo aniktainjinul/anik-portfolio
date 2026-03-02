@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Md Tainjinul Islam Anik | Mechanical Engineer</title>
+<meta name="description" content="Mechanical Engineer specializing in automation systems, machine design and composite materials research.">
+<meta name="keywords" content="Mechanical Engineer, Automation, SolidWorks, ANSYS, Research">
+<meta property="og:title" content="Md Tainjinul Islam Anik Portfolio">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+/* ================= GLOBAL ================= */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  scroll-behavior:smooth;
+}
+body{
+  font-family:'Poppins',sans-serif;
+  background:linear-gradient(135deg,#0f172a,#111827,#020617);
+  color:#e2e8f0;
+  line-height:1.7;
+  overflow-x:hidden;
+}
+
+/* ================= NAVBAR ================= */
+nav{
+  position:fixed;
+  top:0;
+  width:100%;
+  background:rgba(15,23,42,.9);
+  backdrop-filter:blur(12px);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:18px 8%;
+  z-index:1000;
+}
+nav h2{
+  color:#00f5a0;
+  font-weight:700;
+}
+nav ul{
+  display:flex;
+  gap:24px;
+  list-style:none;
+}
+nav a{
+  color:#cbd5e1;
+  text-decoration:none;
+  font-weight:500;
+  position:relative;
+  transition:.3s;
+}
+nav a:hover,
+nav a.active{
+  color:#00f5a0;
+}
+nav a::after{
+  content:"";
+  position:absolute;
+  bottom:-6px;
+  left:0;
+  width:0;
+  height:2px;
+  background:#00f5a0;
+  transition:.3s;
+}
+nav a:hover::after,
+nav a.active::after{
+  width:100%;
+}
+
+/* ================= SECTION ================= */
+.section{
+  padding:110px 8%;
+}
+.section-title{
+  text-align:center;
+  font-size:38px;
+  font-weight:700;
+  margin-bottom:60px;
+  background:linear-gradient(90deg,#00f5a0,#00d9f5);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+/* ================= HERO ================= */
+.hero{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:160px 8% 80px;
+  flex-wrap:wrap;
+}
+.hero-text h1{
+  font-size:54px;
+  font-weight:800;
+  color:white;
+}
+.role{
+  color:#00f5a0;
+  font-size:22px;
+  margin:20px 0;
+  height:35px;
+  font-weight:600;
+}
+.hero-text p{
+  max-width:550px;
+  color:#94a3b8;
+}
+.resume-btn{
+  background:linear-gradient(90deg,#00f5a0,#00d9f5);
+  color:#08121f;
+  padding:14px 35px;
+  border-radius:40px;
+  text-decoration:none;
+  font-weight:600;
+  display:inline-block;
+  margin-top:25px;
+  transition:.4s;
+}
+.resume-btn:hover{
+  transform:translateY(-4px);
+  box-shadow:0 10px 25px rgba(0,245,160,.3);
+}
+
+/* ================= SOCIAL ================= */
+.social-icons{
+  display:flex;
+  gap:18px;
+  margin-top:30px;
+  flex-wrap:wrap;
+}
+.icon{
+  width:48px;
+  height:48px;
+  border-radius:50%;
+  border:1px solid #334155;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  color:#cbd5e1;
+  text-decoration:none;
+  transition:.4s;
+}
+.icon:hover{
+  background:#00f5a0;
+  color:#08121f;
+  transform:translateY(-5px);
+}
+
+/* ================= IMAGE ================= */
+.image-box{
+  width:320px;
+  height:320px;
+  position:relative;
+}
+.image-box img{
+  width:100%;
+  height:100%;
+  border-radius:50%;
+  object-fit:cover;
+  border:4px solid rgba(255,255,255,.1);
+}
+.image-box::before{
+  content:"";
+  position:absolute;
+  inset:-12px;
+  border-radius:50%;
+  border:6px solid transparent;
+  border-top:6px solid #00f5a0;
+  border-right:6px solid #00d9f5;
+  animation:spin 6s linear infinite;
+}
+@keyframes spin{
+  100%{transform:rotate(360deg);}
+}
+
+/* ================= CARD ================= */
+.card{
+  background:rgba(30,41,59,.6);
+  backdrop-filter:blur(20px);
+  padding:30px;
+  border-radius:16px;
+  margin-bottom:25px;
+  border:1px solid rgba(255,255,255,.05);
+  transition:.4s;
+}
+.card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 20px 40px rgba(0,0,0,.4);
+}
+
+/* ================= EDUCATION TIMELINE ================= */
+.timeline{
+  position:relative;
+  max-width:900px;
+  margin:auto;
+  padding-left:40px;
+}
+.timeline::before{
+  content:"";
+  position:absolute;
+  left:20px;
+  width:3px;
+  height:100%;
+  background:linear-gradient(#00f5a0,#00d9f5);
+}
+.timeline-item{
+  margin-bottom:50px;
+  position:relative;
+}
+.timeline-dot{
+  position:absolute;
+  left:6px;
+  width:28px;
+  height:28px;
+  background:linear-gradient(#00f5a0,#00d9f5);
+  border-radius:50%;
+}
+.timeline-content{
+  background:rgba(30,41,59,.6);
+  padding:25px;
+  border-radius:14px;
+}
+.timeline-content h4{
+  color:#00f5a0;
+  margin:6px 0;
+}
+.date{
+  font-size:14px;
+  color:#94a3b8;
+  margin-bottom:10px;
+}
+
+/* ================= CERTIFICATE SLIDER ================= */
+.slider{
+  position:relative;
+  max-width:900px;
+  margin:auto;
+  overflow:hidden;
+}
+.slides{
+  display:flex;
+  transition:.6s;
+}
+.slide{
+  min-width:100%;
+  text-align:center;
+}
+.slide img{
+  width:100%;
+  border-radius:14px;
+  cursor:pointer;
+  box-shadow:0 20px 40px rgba(0,0,0,.4);
+}
+.slide p{
+  margin-top:15px;
+  color:#cbd5e1;
+  font-style:italic;
+}
+.arrow{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  background:rgba(0,245,160,.15);
+  border:none;
+  color:#00f5a0;
+  font-size:30px;
+  width:50px;
+  height:50px;
+  border-radius:50%;
+  cursor:pointer;
+  transition:.3s;
+}
+.arrow:hover{
+  background:#00f5a0;
+  color:#08121f;
+}
+.left{left:10px;}
+.right{right:10px;}
+.dots{
+  text-align:center;
+  margin-top:25px;
+}
+.dot{
+  height:10px;
+  width:10px;
+  margin:0 6px;
+  background:#64748b;
+  border-radius:50%;
+  display:inline-block;
+  cursor:pointer;
+}
+.dot.active{
+  background:#00f5a0;
+  transform:scale(1.3);
+}
+
+/* ================= SKILLS ================= */
+.skills{
+  display:flex;
+  flex-wrap:wrap;
+  gap:18px;
+  justify-content:center;
+}
+.skills span{
+  padding:12px 22px;
+  border-radius:30px;
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.08);
+  transition:.3s;
+}
+.skills span:hover{
+  background:#00f5a0;
+  color:#08121f;
+}
+
+/* ================= CONTACT ================= */
+.contact-wrapper{
+  display:flex;
+  gap:70px;
+  flex-wrap:wrap;
+}
+.info{
+  display:flex;
+  align-items:center;
+  gap:15px;
+  margin-bottom:20px;
+}
+.info i{
+  background:linear-gradient(#00f5a0,#00d9f5);
+  width:45px;
+  height:45px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  border-radius:12px;
+  color:#08121f;
+}
+.contact-form input,
+.contact-form textarea{
+  width:100%;
+  padding:14px;
+  margin-bottom:18px;
+  border-radius:10px;
+  border:1px solid #334155;
+  background:#0f172a;
+  color:white;
+}
+.contact-form button{
+  background:linear-gradient(#00f5a0,#00d9f5);
+  color:#08121f;
+  padding:12px;
+  border:none;
+  border-radius:30px;
+  font-weight:600;
+  cursor:pointer;
+}
+.form-status{
+  margin-top:12px;
+  color:#94a3b8;
+}
+
+/* ================= MODAL ================= */
+.modal{
+  display:none;
+  position:fixed;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,.85);
+  justify-content:center;
+  align-items:center;
+  z-index:2000;
+}
+.modal img{
+  max-width:90%;
+  max-height:90%;
+}
+
+/* ================= WHATSAPP ================= */
+.whatsapp-float{
+  position:fixed;
+  bottom:25px;
+  left:25px;
+  background:#25D366;
+  width:60px;
+  height:60px;
+  border-radius:50%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  color:white;
+  font-size:28px;
+  text-decoration:none;
+}
+
+/* ================= FOOTER ================= */
+footer{
+  text-align:center;
+  padding:30px;
+  background:#020617;
+  color:#94a3b8;
+}
+
+/* ================= RESPONSIVE ================= */
+@media(max-width:900px){
+  .hero,
+  .contact-wrapper{
+    flex-direction:column;
+    text-align:center;
+  }
+  .image-box{
+    margin-top:40px;
+  }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <h2>Anik</h2>
+  <ul>
+    <li><a href="#home" class="active">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#certifications">Certifications</a></li>
+    <li><a href="#research">Research</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="hero" id="home">
+  <div class="hero-text">
+    <h3>Hi! I'm</h3>
+    <h1>Md Tainjinul Islam Anik</h1>
+    <div class="role" id="role" aria-hidden="false"></div>
+    <p>Mechanical Engineer specializing in automation systems, machine design and composite materials research.</p>
+    <a href="Md_Tainjinul_Islam_Anik_CV.pdf" target="_blank" class="resume-btn" rel="noopener">Download CV</a>
+
+    <div class="social-icons" aria-label="social links">
+      <a href="https://www.linkedin.com/in/aniktainjinul/" target="_blank" rel="noopener" class="icon"><i class="fab fa-linkedin-in"></i></a>
+      <a href="https://scholar.google.com/citations?user=rU0o3c8AAAAJ&hl=en" target="_blank" rel="noopener" class="icon"><i class="fa-solid fa-graduation-cap"></i></a>
+      <a href="https://www.researchgate.net/profile/Md-Tainjinul-Islam-Anik" target="_blank" rel="noopener" class="icon"><i class="fa-solid fa-flask"></i></a>
+      <a href="https://www.fiverr.com/sellers/toriqul64/edit" target="_blank" rel="noopener" class="icon">fi</a>
+      <a href="https://www.upwork.com/freelancers/~018c5111dd92804b89" target="_blank" rel="noopener" class="icon">Up</a>
+    </div>
+  </div>
+
+  <div class="image-box" aria-hidden="true">
+    <!-- Replace profile.jpg with your actual profile image file -->
+    <img src="profile.jpg" alt="Profile photo of Md Tainjinul Islam Anik">
+  </div>
+</section>
+
+<section class="section" id="about">
+  <h2 class="section-title">About Me</h2>
+  <div class="card">
+    Mechanical Engineering graduate experienced in industrial automation, machine maintenance, and composite material research. Published author in Springer journal focusing on fiber reinforced composites.
+  </div>
+</section>
+
+<section class="section" id="education">
+  <h2 class="section-title">Education</h2>
+
+  <div class="timeline">
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-content">
+        <h3>Bachelor of Science in Mechanical Engineering</h3>
+        <h4>Ahsanullah University of Science & Technology</h4>
+        <p class="date">01/06/2019 - 29/11/2023</p>
+        <p>Final Grade: 3.335 / 4.00</p>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-content">
+        <h3>Higher Secondary Certificate (HSC)</h3>
+        <h4>Shaheed Police Smrity College</h4>
+        <p>Final Grade: 4.75 / 5.00</p>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-content">
+        <h3>Secondary School Certificate (SSC)</h3>
+        <h4>Shaheed Police Smrity College</h4>
+        <p>Final Grade: 5.00 / 5.00</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="section" id="experience">
+  <h2 class="section-title">Experience</h2>
+
+  <div class="card">
+    <b>Mechanical Engineer — Snowtex Group</b>
+    <ul>
+      <li>Machine maintenance & productivity optimization</li>
+      <li>Mechanical tool design using AutoCAD</li>
+      <li>Process automation improvements</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <b>Intern — Sylhet Gas Fields Limited</b>
+    <ul>
+      <li>Industrial plant operations</li>
+      <li>Mechanical system maintenance</li>
+    </ul>
+  </div>
+
+</section>
+
+<section class="section" id="certifications">
+  <h2 class="section-title">Training & Certifications</h2>
+
+  <div class="slider" aria-hidden="false">
+    <button class="arrow left" onclick="prevSlide()" aria-label="Previous certificate">❮</button>
+
+    <div class="slides">
+      <div class="slide">
+        <img src="internship.jpg" alt="Internship Certificate" onclick="openModal(this)">
+        <p>Internship Certificate — Sylhet Gas Fields Limited</p>
+      </div>
+
+      <div class="slide">
+        <img src="achievement.jpg" alt="Achievement Certificate" onclick="openModal(this)">
+        <p>Certificate of Achievement — SSC GPA-5 Recognition</p>
+      </div>
+
+      <div class="slide">
+        <img src="meta_certificate.jpg" alt="Meta (Coursera) Certificate" onclick="openModal(this)">
+        <p>Introduction to Front-End Development — Meta (Coursera)</p>
+      </div>
+    </div>
+
+    <button class="arrow right" onclick="nextSlide()" aria-label="Next certificate">❯</button>
+  </div>
+
+  <div class="dots" role="tablist" aria-label="certificate slides">
+    <span class="dot active" onclick="goSlide(0)" role="tab" aria-selected="true"></span>
+    <span class="dot" onclick="goSlide(1)" role="tab" aria-selected="false"></span>
+    <span class="dot" onclick="goSlide(2)" role="tab" aria-selected="false"></span>
+  </div>
+
+</section>
+
+<section class="section" id="research">
+  <h2 class="section-title">Research & Publication</h2>
+  <div class="card">
+    Springer Publication — Biomass Conversion and Biorefinery: Fiber reinforced composite material analysis and testing.
+  </div>
+</section>
+
+<section class="section" id="skills">
+  <h2 class="section-title">Skills</h2>
+  <div class="skills">
+    <span>SolidWorks</span>
+    <span>AutoCAD</span>
+    <span>ANSYS</span>
+    <span>MS Excel</span>
+    <span>Origin Pro</span>
+    <span>Automation</span>
+  </div>
+</section>
+
+<!-- =================== CONTACT SECTION (Fully wired to Formspree) =================== -->
+<section class="section" id="contact">
+  <h2 class="section-title">Contact</h2>
+
+  <div class="contact-wrapper" aria-live="polite">
+
+    <div>
+      <div class="info"><i class="fab fa-whatsapp" aria-hidden="true"></i> +8801968962896</div>
+      <div class="info"><i class="fas fa-envelope" aria-hidden="true"></i> aniktainjinul@gmail.com</div>
+      <div class="info"><i class="fas fa-location-dot" aria-hidden="true"></i> Dhaka, Bangladesh</div>
+    </div>
+
+    <!-- Formspree form: action uses the provided endpoint -->
+    <form class="contact-form" id="contactForm"
+          action="https://formspree.io/f/xjgednzo"
+          method="POST" novalidate>
+
+      <!-- Honeypot to reduce spam (Formspree uses _gotcha by convention) -->
+      <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+
+      <!-- Visible fields -->
+      <input type="text" name="name" id="name" placeholder="Your Name" required>
+      <input type="email" name="email" id="email" placeholder="Your Email" required>
+      <textarea name="message" id="message" rows="5" placeholder="Message" required></textarea>
+
+      <!-- Optional: add a hidden subject or redirect parameter if desired -->
+      <input type="hidden" name="_subject" value="Portfolio Contact Form Message">
+
+      <button type="submit" id="sendBtn">Send Message</button>
+
+      <!-- Inline status message -->
+      <div id="formStatus" class="form-status" role="status" aria-live="polite"></div>
+
+    </form>
+
+  </div>
+</section>
+
+<div class="modal" id="modal" onclick="closeModal()">
+  <img id="modalImg" alt="Certificate enlarged">
+</div>
+
+<a href="https://wa.me/8801968962896" target="_blank" class="whatsapp-float" rel="noopener" aria-label="Open WhatsApp chat">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+<footer>
+  © 2026 Md Tainjinul Islam Anik — Mechanical Engineer | Designed with precision.
+</footer>
+
+<script>
+/* ================= Typing effect for role ================= */
+const roles=["Mechanical Engineer","Automation Specialist","Composite Researcher"];
+let ti = 0, tj = 0, tdel = false;
+function typeRole(){
+  const el = document.getElementById("role");
+  if(!tdel && tj <= roles[ti].length){
+    el.textContent = roles[ti].substring(0, tj++);
+  } else if(tdel && tj >= 0){
+    el.textContent = roles[ti].substring(0, tj--);
+  }
+  if(tj === roles[ti].length) tdel = true;
+  if(tj === 0){ tdel = false; ti = (ti+1) % roles.length; }
+  setTimeout(typeRole, 90);
+}
+typeRole();
+
+/* ================= Slider logic ================= */
+let slideIndex = 0;
+const slidesEl = document.querySelector('.slides');
+const dots = document.querySelectorAll('.dot');
+const total = dots.length;
+
+function updateSlider(){
+  slidesEl.style.transform = `translateX(-${slideIndex * 100}%)`;
+  dots.forEach(d => d.classList.remove('active'));
+  if(dots[slideIndex]) dots[slideIndex].classList.add('active');
+}
+function nextSlide(){ slideIndex = (slideIndex + 1) % total; updateSlider(); }
+function prevSlide(){ slideIndex = (slideIndex - 1 + total) % total; updateSlider(); }
+function goSlide(i){ slideIndex = i; updateSlider(); }
+
+let sliderInterval = setInterval(nextSlide, 5000);
+
+/* ================= Modal for certificate images ================= */
+function openModal(img){
+  const modal = document.getElementById('modal');
+  const modalImg = document.getElementById('modalImg');
+  modalImg.src = img.src;
+  modal.style.display = 'flex';
+}
+function closeModal(){
+  const modal = document.getElementById('modal');
+  modal.style.display = 'none';
+}
+
+/* ================= Contact Form AJAX submit (Formspree) ================= */
+/* Uses the Formspree endpoint you provided: https://formspree.io/f/xjgednzo */
+(function(){
+  const form = document.getElementById('contactForm');
+  const status = document.getElementById('formStatus');
+  const sendBtn = document.getElementById('sendBtn');
+
+  if(!form) return;
+
+  form.addEventListener('submit', async function(e){
+    e.preventDefault();
+
+    // Basic client-side validation
+    const name = document.getElementById('name');
+    const email = document.getElementById('email');
+    const message = document.getElementById('message');
+
+    if(!name.value.trim() || !email.value.trim() || !message.value.trim()){
+      status.textContent = 'Please fill all required fields.';
+      return;
+    }
+
+    // Disable button & show sending state
+    sendBtn.disabled = true;
+    const originalBtnText = sendBtn.textContent;
+    sendBtn.textContent = 'Sending...';
+
+    const formData = new FormData(form);
+
+    try {
+      const res = await fetch(form.action, {
+        method: form.method,
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+
+      if (res.ok) {
+        status.style.color = '#9AE6B4'; // light green
+        status.textContent = '✅ Message sent successfully! Thank you — I will reply soon.';
+        form.reset();
+      } else {
+        // Try to read json error message from Formspree
+        let data;
+        try { data = await res.json(); } catch(_) { data = null; }
+        status.style.color = '#FCA5A5'; // light red
+        status.textContent = (data && data.error) ? `Error: ${data.error}` : '❌ Something went wrong. Please try again later.';
+      }
+    } catch (err) {
+      status.style.color = '#FCA5A5';
+      status.textContent = '❌ Network error. Please check your connection and try again.';
+      console.error('Form submit error:', err);
+    } finally {
+      sendBtn.disabled = false;
+      sendBtn.textContent = originalBtnText;
+    }
+  });
+})();
+</script>
+
+</body>
+</html>
