@@ -624,9 +624,26 @@ footer{
       Springer Journal — <i>Biomass Conversion and Biorefinery</i>
     </p>
 
-    <p style="color:#94a3b8; font-size:14px; margin-bottom:20px;">
-      DOI: 10.1007/s13399-024-05728-6
-    </p>
+    <div style="display:flex; align-items:center; gap:10px; margin-bottom:20px; color:#94a3b8; font-size:14px;">
+  
+  <span id="doiText">
+    DOI: 10.1007/s13399-024-05728-6
+  </span>
+
+  <button onclick="copyDOI()" 
+          style="
+            background:rgba(0,245,160,.15);
+            border:none;
+            color:#00f5a0;
+            cursor:pointer;
+            padding:6px 10px;
+            border-radius:8px;">
+    <i class="fa-solid fa-copy"></i>
+  </button>
+
+  <span id="copyStatus" style="font-size:13px;"></span>
+
+</div>
 
     <!-- Description -->
     <p>
