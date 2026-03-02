@@ -791,21 +791,42 @@ function typeRole(){
 typeRole();
 
 /* ================= Slider logic ================= */
-let slideIndex = 0;
-const slidesEl = document.querySelector('.slides');
-const dots = document.querySelectorAll('.dot');
-const total = dots.length;
+document.addEventListener("DOMContentLoaded", function() {
 
-function updateSlider(){
-  slidesEl.style.transform = `translateX(-${slideIndex * 100}%)`;
-  dots.forEach(d => d.classList.remove('active'));
-  if(dots[slideIndex]) dots[slideIndex].classList.add('active');
-}
-function nextSlide(){ slideIndex = (slideIndex + 1) % total; updateSlider(); }
-function prevSlide(){ slideIndex = (slideIndex - 1 + total) % total; updateSlider(); }
-function goSlide(i){ slideIndex = i; updateSlider(); }
+  let slideIndex = 0;
+  const slidesEl = document.querySelector('.slides');
+  const dots = document.querySelectorAll('.dot');
+  const total = dots.length;
 
-let sliderInterval = setInterval(nextSlide, 5000);
+  function updateSlider(){
+    slidesEl.style.transform = `translateX(-${slideIndex * 100}%)`;
+    dots.forEach(d => d.classList.remove('active'));
+    if(dots[slideIndex]) dots[slideIndex].classList.add('active');
+  }
+
+  function nextSlide(){ 
+    slideIndex = (slideIndex + 1) % total; 
+    updateSlider(); 
+  }
+
+  function prevSlide(){ 
+    slideIndex = (slideIndex - 1 + total) % total; 
+    updateSlider(); 
+  }
+
+  function goSlide(i){ 
+    slideIndex = i; 
+    updateSlider(); 
+  }
+
+  window.nextSlide = nextSlide;
+  window.prevSlide = prevSlide;
+  window.goSlide = goSlide;
+
+  updateSlider();
+  let sliderInterval = setInterval(nextSlide, 5000);
+
+});
 
 /* ================= Modal for certificate images ================= */
 function openModal(img){
