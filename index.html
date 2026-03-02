@@ -790,43 +790,79 @@ function typeRole(){
 }
 typeRole();
 
+<script>
 /* ================= Slider logic ================= */
-document.addEventListener("DOMContentLoaded", function() {
 
-  let slideIndex = 0;
-  const slidesEl = document.querySelector('.slides');
-  const dots = document.querySelectorAll('.dot');
-  const total = dots.length;
+let slideIndex = 0;
+const slidesEl = document.querySelector('.slides');
+const dots = document.querySelectorAll('.dot');
+const total = dots.length;
 
-  function updateSlider(){
-    slidesEl.style.transform = `translateX(-${slideIndex * 100}%)`;
-    dots.forEach(d => d.classList.remove('active'));
-    if(dots[slideIndex]) dots[slideIndex].classList.add('active');
+/* Update slide position */
+function updateSlider() {
+  if (!slidesEl) return;
+
+  slidesEl.style.transform = `translateX(-${slideIndex * 100}%)`;
+
+  dots.forEach(dot => dot.classList.remove('active'));
+  if (dots[slideIndex]) {
+    dots[slideIndex].classList.add('active');
   }
+}
 
-  function nextSlide(){ 
-    slideIndex = (slideIndex + 1) % total; 
-    updateSlider(); 
-  }
-
-  function prevSlide(){ 
-    slideIndex = (slideIndex - 1 + total) % total; 
-    updateSlider(); 
-  }
-
-  function goSlide(i){ 
-    slideIndex = i; 
-    updateSlider(); 
-  }
-
-  window.nextSlide = nextSlide;
-  window.prevSlide = prevSlide;
-  window.goSlide = goSlide;
-
+/* Next slide */
+function nextSlide() {
+  slideIndex = (slideIndex + 1) % total;
   updateSlider();
-  let sliderInterval = setInterval(nextSlide, 5000);
+}
 
-});
+/* Previous slide */
+function prevSlide() {
+  slideIndex = (slideIndex - 1 + total) % total;
+  updateSlider();
+}
+
+/* Dot navigation */
+function goSlide(index) {
+  slideIndex = index;
+  updateSlider();
+}
+
+/* Initialize slider */
+updateSlider();
+
+/* Auto slide every 5 seconds */
+let sliderInterval = setInterval(nextSlide, 5000);
+
+/* Pause auto-slide on hover */
+const slider = document.querySelector('.slider');
+
+if (slider) {
+  slider.addEventListener('mouseenter', () => {
+    clearInterval(sliderInterval);
+  });
+
+  slider.addEventListener('mouseleave', () => {
+    sliderInterval = setInterval(nextSlide, 5000);
+  });
+}
+
+/* Mobile swipe support */
+let startX = 0;
+
+if (slider) {
+  slider.addEventListener("touchstart", e => {
+    startX = e.touches[0].clientX;
+  });
+
+  slider.addEventListener("touchend", e => {
+    let endX = e.changedTouches[0].clientX;
+
+    if (startX - endX > 50) nextSlide();
+    if (endX - startX > 50) prevSlide();
+  });
+}
+</script>
 
 /* ================= Modal for certificate images ================= */
 function openModal(img){
