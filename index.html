@@ -242,9 +242,16 @@ nav a.active::after{
 /* ================= CERTIFICATE SLIDER ================= */
 .slider{
   position:relative;
-  max-width:900px;
+  max-width:700px;   /* smaller width */
   margin:auto;
   overflow:hidden;
+}
+  .slide{
+  min-width:100%;
+  text-align:center;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
 }
 .slides{
   display:flex;
@@ -255,14 +262,22 @@ nav a.active::after{
   text-align:center;
 }
 .slide img{
-  width:100%;
-  border-radius:14px;
+  width:70%;
+  max-height:420px;
+  object-fit:contain;
+  border-radius:12px;
   cursor:pointer;
-  box-shadow:0 20px 40px rgba(0,0,0,.4);
+  box-shadow:0 10px 25px rgba(0,0,0,.35);
+  transition:.3s;
+}
+
+.slide img:hover{
+  transform:scale(1.03);
 }
 .slide p{
-  margin-top:15px;
-  color:#cbd5e1;
+  margin-top:12px;
+  font-size:15px;
+  color:#94a3b8;
   font-style:italic;
 }
 .arrow{
