@@ -774,7 +774,8 @@ footer{
 </footer>
 
 <script>
-/* ================= Typing effect for role ================= */
+
+/* ================= Typing effect ================= */
 const roles=["Mechanical Engineer","Automation Specialist","Composite Researcher"];
 let ti = 0, tj = 0, tdel = false;
 function typeRole(){
@@ -790,94 +791,80 @@ function typeRole(){
 }
 typeRole();
 
-<script>
 /* ================= Slider logic ================= */
 
-let slideIndex = 0;
-const slidesEl = document.querySelector('.slides');
-const dots = document.querySelectorAll('.dot');
-const total = dots.length;
+window.addEventListener("load", function () {
 
-/* Update slide position */
-function updateSlider() {
-  if (!slidesEl) return;
+  let slideIndex = 0;
+  const slidesEl = document.querySelector('.slides');
+  const dots = document.querySelectorAll('.dot');
+  const slider = document.querySelector('.slider');
+  const total = dots.length;
 
-  slidesEl.style.transform = `translateX(-${slideIndex * 100}%)`;
+  if (!slidesEl || total === 0) return;
 
-  dots.forEach(dot => dot.classList.remove('active'));
-  if (dots[slideIndex]) {
+  function updateSlider() {
+    slidesEl.style.transform = `translateX(-${slideIndex * 100}%)`;
+    dots.forEach(dot => dot.classList.remove('active'));
     dots[slideIndex].classList.add('active');
   }
-}
 
-/* Next slide */
-function nextSlide() {
-  slideIndex = (slideIndex + 1) % total;
+  window.nextSlide = function () {
+    slideIndex = (slideIndex + 1) % total;
+    updateSlider();
+  };
+
+  window.prevSlide = function () {
+    slideIndex = (slideIndex - 1 + total) % total;
+    updateSlider();
+  };
+
+  window.goSlide = function (index) {
+    slideIndex = index;
+    updateSlider();
+  };
+
   updateSlider();
-}
 
-/* Previous slide */
-function prevSlide() {
-  slideIndex = (slideIndex - 1 + total) % total;
-  updateSlider();
-}
+  /* Auto slide */
+  let sliderInterval = setInterval(nextSlide, 5000);
 
-/* Dot navigation */
-function goSlide(index) {
-  slideIndex = index;
-  updateSlider();
-}
+  /* Pause on hover */
+  if (slider) {
+    slider.addEventListener('mouseenter', () => clearInterval(sliderInterval));
+    slider.addEventListener('mouseleave', () => {
+      sliderInterval = setInterval(nextSlide, 5000);
+    });
 
-/* Initialize slider */
-updateSlider();
+    /* Mobile swipe */
+    let startX = 0;
 
-/* Auto slide every 5 seconds */
-let sliderInterval = setInterval(nextSlide, 5000);
+    slider.addEventListener("touchstart", e => {
+      startX = e.touches[0].clientX;
+    });
 
-/* Pause auto-slide on hover */
-const slider = document.querySelector('.slider');
+    slider.addEventListener("touchend", e => {
+      const endX = e.changedTouches[0].clientX;
+      if (startX - endX > 50) nextSlide();
+      if (endX - startX > 50) prevSlide();
+    });
+  }
 
-if (slider) {
-  slider.addEventListener('mouseenter', () => {
-    clearInterval(sliderInterval);
-  });
+});
 
-  slider.addEventListener('mouseleave', () => {
-    sliderInterval = setInterval(nextSlide, 5000);
-  });
-}
-
-/* Mobile swipe support */
-let startX = 0;
-
-if (slider) {
-  slider.addEventListener("touchstart", e => {
-    startX = e.touches[0].clientX;
-  });
-
-  slider.addEventListener("touchend", e => {
-    let endX = e.changedTouches[0].clientX;
-
-    if (startX - endX > 50) nextSlide();
-    if (endX - startX > 50) prevSlide();
-  });
-}
-</script>
-
-/* ================= Modal for certificate images ================= */
+/* ================= Modal ================= */
 function openModal(img){
   const modal = document.getElementById('modal');
   const modalImg = document.getElementById('modalImg');
   modalImg.src = img.src;
   modal.style.display = 'flex';
 }
+
 function closeModal(){
-  const modal = document.getElementById('modal');
-  modal.style.display = 'none';
+  document.getElementById('modal').style.display = 'none';
 }
 
-/* ================= Contact Form AJAX submit (Formspree) ================= */
-/* Uses the Formspree endpoint you provided: https://formspree.io/f/xjgednzo */
+/* ================= Contact Form ================= */
 (function(){
   const form = document.getElementById('contactForm');
   const status = document.getElementById('formStatus');
@@ -888,19 +875,12 @@ function closeModal(){
   form.addEventListener('submit', async function(e){
     e.preventDefault();
 
-    // Basic client-side validation
-    const name = document.getElementById('name');
-    const email = document.getElementById('email');
-    const message = document.getElementById('message');
-
-    if(!name.value.trim() || !email.value.trim() || !message.value.trim()){
+    if(!form.name.value.trim() || !form.email.value.trim() || !form.message.value.trim()){
       status.textContent = 'Please fill all required fields.';
       return;
     }
 
-    // Disable button & show sending state
     sendBtn.disabled = true;
-    const originalBtnText = sendBtn.textContent;
     sendBtn.textContent = 'Sending...';
 
     const formData = new FormData(form);
@@ -909,46 +889,37 @@ function closeModal(){
       const res = await fetch(form.action, {
         method: form.method,
         body: formData,
-        headers: {
-          'Accept': 'application/json'
-        }
+        headers: { 'Accept': 'application/json' }
       });
 
       if (res.ok) {
-        status.style.color = '#9AE6B4'; // light green
-        status.textContent = '✅ Message sent successfully! Thank you — I will reply soon.';
+        status.style.color = '#9AE6B4';
+        status.textContent = '✅ Message sent successfully!';
         form.reset();
       } else {
-        // Try to read json error message from Formspree
-        let data;
-        try { data = await res.json(); } catch(_) { data = null; }
-        status.style.color = '#FCA5A5'; // light red
-        status.textContent = (data && data.error) ? `Error: ${data.error}` : '❌ Something went wrong. Please try again later.';
+        status.style.color = '#FCA5A5';
+        status.textContent = '❌ Something went wrong.';
       }
     } catch (err) {
       status.style.color = '#FCA5A5';
-      status.textContent = '❌ Network error. Please check your connection and try again.';
-      console.error('Form submit error:', err);
+      status.textContent = '❌ Network error.';
     } finally {
       sendBtn.disabled = false;
-      sendBtn.textContent = originalBtnText;
+      sendBtn.textContent = 'Send Message';
     }
   });
 })();
-</script>
-  <script>
+
+/* ================= Copy DOI ================= */
 function copyDOI() {
-  const doi = "10.1007/s13399-024-05728-6";
-  navigator.clipboard.writeText(doi).then(function() {
+  navigator.clipboard.writeText("10.1007/s13399-024-05728-6").then(function() {
     const status = document.getElementById("copyStatus");
     status.textContent = "Copied!";
     status.style.color = "#00f5a0";
-
-    setTimeout(() => {
-      status.textContent = "";
-    }, 2000);
+    setTimeout(() => status.textContent = "", 2000);
   });
 }
+
 </script>
 
 </body>
